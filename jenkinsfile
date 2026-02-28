@@ -62,23 +62,19 @@ pipeline {
 
   stages {
 
-    stage('Runtime Debug') {
-      steps {
+    stage('Where Am I Really?') {
+  steps {
     sh '''
-      echo "===== WHOAMI ====="
-      whoami
-      echo "===== HOST ====="
+      echo "HOSTNAME:"
       hostname
-      echo "===== JAVA PATH ====="
-      which java
-      echo "===== JAVA VERSION ====="
+      echo "IP:"
+      hostname -I || true
+      echo "USER:"
+      whoami
+      echo "JAVA:"
       java -version
-      echo "===== JAVA_HOME ====="
-      echo $JAVA_HOME
-      echo "===== MAVEN VERSION ====="
+      echo "MAVEN:"
       mvn -version
-      echo "===== ENV JAVA ====="
-      env | grep -i java || true
     '''
   }
 }
