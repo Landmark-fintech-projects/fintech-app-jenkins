@@ -6,7 +6,7 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:327019199684:certificate/acb8da41-0664-43f2-8918-729cf32aaaa9
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:805703880776:certificate/38579038-26ad-401c-9fcf-36276dbc76a8
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
     alb.ingress.kubernetes.io/healthcheck-port: "8080"
     alb.ingress.kubernetes.io/healthcheck-path: "/actuator/health"
@@ -14,7 +14,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: app.fusisoft.com
+  - host: app.shollztech.com
     http:
       paths:
       - path: /
