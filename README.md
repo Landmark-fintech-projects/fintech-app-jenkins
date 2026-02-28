@@ -224,7 +224,7 @@ ENVIRONMENT = dev | qa | uat | prod
 
 IMAGE_TAG optional
 
-REGION = us-east-2
+REGION = us-east-1
 
 Click Build
 

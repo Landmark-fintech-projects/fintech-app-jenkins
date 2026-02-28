@@ -1,11 +1,11 @@
 #!/bin/bash
 #
 # === CONFIGURATION ===
-AWS_ACCOUNT_ID="999568710647"
-AWS_REGION="us-east-2"
+AWS_ACCOUNT_ID="805703880776"
+AWS_REGION="us-east-1"
 ECR_REPO_NAME="fintech-app"
 EKS_NAMESPACE="fintech"
-DOMAIN_NAME="dominionsystem.org"
+DOMAIN_NAME="shollztech.com"
 APP_PORT=8080
 
 # === GO TO PROJECT ROOT ===

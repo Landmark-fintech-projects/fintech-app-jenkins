@@ -83,15 +83,12 @@ pipeline {
     }
 
     stage('Build with Maven') {
-      steps {
-        sh '''
-          set -e
-          [ -f /etc/profile.d/maven.sh ] && . /etc/profile.d/maven.sh || true
-          mvn -B -ntp clean package -DskipTests
-        '''
-        archiveArtifacts artifacts: 'target/**/*.jar', fingerprint: true, onlyIfSuccessful: true
-      }
+  steps {
+    withEnv(["JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64"]) {
+      sh 'mvn -B -ntp clean package -DskipTests'
     }
+  }
+}
 
     stage('SonarQube Scan') {
       when { expression { return !env.CHANGE_ID } }

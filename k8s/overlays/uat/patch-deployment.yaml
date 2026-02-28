@@ -17,4 +17,4 @@ spec:
     spec:
       containers:
       - name: fintech-app
-        image: 999568710647.dkr.ecr.us-east-2.amazonaws.com/fintech-app:IMAGE_TAG
+        image: 805703880776.dkr.ecr.us-east-1.amazonaws.com/fintech-app:IMAGE_TAG
