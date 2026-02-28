@@ -1,5 +1,5 @@
 # -------- STAGE 1: Build the application --------
-FROM maven:3.9.4-eclipse-temurin-17-alpine AS build
+FROM maven:3.9.11-eclipse-temurin-17-alpine AS build
 
 WORKDIR /build
 
