@@ -98,7 +98,19 @@ pipeline {
         """
       }
     }
-
+stage('Check Javac') {
+  steps {
+    sh '''
+      echo "===== WHICH JAVAC ====="
+      which javac
+      echo "===== JAVAC VERSION ====="
+      javac -version
+      echo "===== JAVA HOME ====="
+      echo $JAVA_HOME
+      ls -l $JAVA_HOME/bin/javac || true
+    '''
+  }
+}
     stage('Build with Maven') {
   steps {
     withEnv(["JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64"]) {
