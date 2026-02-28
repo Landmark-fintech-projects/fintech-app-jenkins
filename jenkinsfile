@@ -18,7 +18,7 @@ pipeline {
 
     string(
       name: 'REGION',
-      defaultValue: 'us-west-2',
+      defaultValue: 'us-east-1',
       description: 'AWS Region'
     )
 

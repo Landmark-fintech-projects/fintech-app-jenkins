@@ -27,7 +27,7 @@ sudo apt-get install -y wget unzip curl zip gnupg lsb-release openjdk-17-jdk tar
 install_kubectl() {
   if ! command -v kubectl &>/dev/null; then
     echo "Installing kubectl..."
-    curl -fsSL -o kubectl "https://s3.us-west-2.amazonaws.com/amazon-eks/1.31.7/2025-04-17/bin/linux/amd64/kubectl"
+    curl -fsSL -o kubectl "https://s3.us-east-1.amazonaws.com/amazon-eks/1.31.7/2025-04-17/bin/linux/amd64/kubectl"
     chmod +x ./kubectl
     sudo mv ./kubectl /usr/local/bin/kubectl
   else
