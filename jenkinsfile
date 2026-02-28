@@ -62,6 +62,27 @@ pipeline {
 
   stages {
 
+    stage('Runtime Debug') {
+      steps {
+    sh '''
+      echo "===== WHOAMI ====="
+      whoami
+      echo "===== HOST ====="
+      hostname
+      echo "===== JAVA PATH ====="
+      which java
+      echo "===== JAVA VERSION ====="
+      java -version
+      echo "===== JAVA_HOME ====="
+      echo $JAVA_HOME
+      echo "===== MAVEN VERSION ====="
+      mvn -version
+      echo "===== ENV JAVA ====="
+      env | grep -i java || true
+    '''
+  }
+}
+
     stage('Checkout') {
       steps {
         checkout scm
