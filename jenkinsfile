@@ -62,23 +62,6 @@ pipeline {
 
   stages {
 
-    stage('Where Am I Really?') {
-  steps {
-    sh '''
-      echo "HOSTNAME:"
-      hostname
-      echo "IP:"
-      hostname -I || true
-      echo "USER:"
-      whoami
-      echo "JAVA:"
-      java -version
-      echo "MAVEN:"
-      mvn -version
-    '''
-  }
-}
-
     stage('Checkout') {
       steps {
         checkout scm
@@ -98,26 +81,17 @@ pipeline {
         """
       }
     }
-stage('Check Javac') {
-  steps {
-    sh '''
-      echo "===== WHICH JAVAC ====="
-      which javac
-      echo "===== JAVAC VERSION ====="
-      javac -version
-      echo "===== JAVA HOME ====="
-      echo $JAVA_HOME
-      ls -l $JAVA_HOME/bin/javac || true
-    '''
-  }
-}
+
     stage('Build with Maven') {
-  steps {
-    withEnv(["JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64"]) {
-      sh 'mvn -B -ntp clean package -DskipTests'
+      steps {
+        sh '''
+          set -e
+          [ -f /etc/profile.d/maven.sh ] && . /etc/profile.d/maven.sh || true
+          mvn -B -ntp clean package -DskipTests
+        '''
+        archiveArtifacts artifacts: 'target/**/*.jar', fingerprint: true, onlyIfSuccessful: true
+      }
     }
-  }
-}
 
     stage('SonarQube Scan') {
       when { expression { return !env.CHANGE_ID } }
